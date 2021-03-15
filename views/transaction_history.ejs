@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+	<div class="alert alert-success font-bold alert-dismissible" id="myAlert">
+    <a href="#" class="close">&times;</a>
+    <%= message %>
+  </div>
+	
+</div>
+<table class="table table-bordered table-striped table-dark " id="table1">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">S.NO</th>
+			<th scope="col">SENDER</th>
+			<th scope="col">RECEIVER</th>
+			<th scope="col">AMOUNT</th>
+			<th scope="col">TIME OF TRANSACTION</th>
+		</tr>
+	</thead>
+
+
+	
+		<%for(var i= 0 ;i<allTx.length ; i++){ %>
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td ><%= allTx[i].sender_name %></td>
+				<td ><%= allTx[i].rec_name%></td>
+				<td ><%= allTx[i].amount%></td>
+				<Td ><%= allTx[i].date_of_tx.toISOString().split('T')[0]%></Td>
+			
+			<tr>	
+		</tbody>
+	<% } %>
+	
+
+	
+</table>
+
+<script>
+$(document).ready(function(){
+  $(".close").click(function(){
+    $("#myAlert").alert("close");
+  });
+});
+</script>
+
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,82 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+	body{
+		text-align : center;
+	}
+</style>
+<!-- //validation of form -->
+<script>
+	function validate(){
+		var balance = parseInt(document.forms["myform"]["balance"].value);
+		var tx_amt  = parseInt(document.forms["myform"]["transfer_amt"].value);
+		if(balance < tx_amt){
+			alert("LOW BALANCE");
+			return false;
+		}
+		
+	}
+	
+		  </script>
+
+
+<h1>Start Your Payment</h1>
+	
+	<form onsubmit="return validate(this);" name="myform"
+		  action="/transactions"id="transaction" method="POST" >
+		<label class="font-bold text-white">FROM</label>
+		
+		<input name="sender_name"style="border : 3px solid blue"
+			   class="form-control form-control-lg" type="text"
+			   readonly value="<%=currentUser.name %>">
+		
+		<label class="font-bold text-white"style="padding-top : 15px;">TO</label>
+		<select id="myselect" name="rec_name"style="border : 3px solid blue" 
+				class="form-control form-control-lg ">
+			<% for(var i=0 ;i<users.length;i++){
+				if(currentUser.name != users[i].name){
+				
+					
+			%>		
+			<option ><%=users[i].name %></option>
+			<% }} %>
+		</select>
+		
+		<label style="padding-top : 15px;" 
+			   class="font-bold text-white">BALANCE</label>
+		
+		<input name="balance"style="border : 3px solid blue"
+			   class="form-control form-control-lg" type="text"
+			   readonly value="<%=currentUser.balance %>">
+		
+		
+		<label style="padding-top : 15px;" 
+			   class="font-bold text-white">ENTER AMOUNT</label>
+		<select name="transfer_amt" style="border : 3px solid blue"
+				class="form-control form-control-lg ">
+			<% for(var i=100 ;i<5001;i+=100){%>
+			<option ><%= i%></option>
+			<% } %>
+		</select>
+		
+		
+		
+		<input hidden type="text" name="sender_balance" value="<%=currentUser.balance %>">
+	
+		
+		<input id="paybtn" 
+			   type="submit" value="Start payment" 
+			   class="btn btn-lg btn-primary btn-lg">
+		
+		
+		
+				
+		
+		
+		
+		
+	</form>
+
+
+
+<%- include("partials/footer.ejs") %>

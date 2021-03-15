@@ -1,0 +1,40 @@
+<%- include("partials/header.ejs") %>
+
+
+<table class="table table-bordered table-striped table-dark " id="table1">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">S.NO</th>
+			<th scope="col">NAME</th>
+			<th scope="col">EMAIL</th>
+			<th scope="col">PHONE</th>
+			<th scope="col">BALANCE</th>
+			<th scope="col">TRANSACTION</th>
+		</tr>
+	</thead>
+
+
+	<%for(var i= 0 ;i<users.length ; i++){ %>
+	<form action="/users/<%=users[i]._id%>/transactions" method="POST">
+		<tbody>
+			<tr>
+				<th scope="row"><%= i+1 %></th>
+				<td name="name"><%= users[i].name %></td>
+				<td name="email"><%= users[i].email %></td>
+				<td name="phoneNum"><%= users[i].phoneNum%></td>
+				<td name="balance"><%= users[i].balance%></td>
+				<td>
+
+						<button class="btn  btn-success">
+							Start Transaction
+						</button>
+					
+				</td>
+			<tr>	
+		</tbody>
+	</form>
+
+	<%}%>
+</table>
+
+<%- include("partials/footer.ejs") %>

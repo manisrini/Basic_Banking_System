@@ -5,7 +5,7 @@
 		text-align : center;
 	}
 </style>
-<!-- //validation of form -->
+<!-- validation of form -->
 <script>
 	function validate(){
 		var balance = parseInt(document.forms["myform"]["balance"].value);
@@ -20,7 +20,7 @@
 		  </script>
 
 
-<h1>Start Your Payment</h1>
+<h1 style="padding-top : 10px"class="font-menlo">Payment Form</h1>
 	
 	<form onsubmit="return validate(this);" name="myform"
 		  action="/transactions"id="transaction" method="POST" >
@@ -43,7 +43,7 @@
 		</select>
 		
 		<label style="padding-top : 15px;" 
-			   class="font-bold text-white">BALANCE</label>
+			   class="font-bold text-white">CURRENT BALANCE</label>
 		
 		<input name="balance"style="border : 3px solid blue"
 			   class="form-control form-control-lg" type="text"

@@ -1,11 +1,16 @@
 <%- include("partials/header.ejs") %>
 
+<%if(typeof(newTx) !== "undefined"){%>
 <div class="container">
-	<div class="alert alert-success font-bold alert-dismissible" id="myAlert">
-    <a href="#" class="close">&times;</a>
-    <%= message %>
-  </div>
+	<div class="alert alert-success font-bold
+				alert-dismissible" id="myAlert">
+	<a href="#" class="close">&times;</a>
+	<%= message %>
+	 </div>
+<%  } %>	
 	
+
+
 </div>
 <table class="table table-bordered table-striped table-dark " id="table1">
 	<thead class="thead-dark">
@@ -38,6 +43,9 @@
 </table>
 
 <script>
+
+	
+	
 $(document).ready(function(){
   $(".close").click(function(){
     $("#myAlert").alert("close");

@@ -11,6 +11,8 @@ app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended:false}))
 
 //mongodb+srv://Manikandan:<password>@cluster0.2j7rp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+
 mongoose.connect(process.env.DBURL,{
 	useNewUrlParser: true,
   	useUnifiedTopology: true

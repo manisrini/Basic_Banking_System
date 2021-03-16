@@ -1,6 +1,7 @@
 <%- include("partials/header.ejs") %>
 
-<%if(typeof(newTx) !== "undefined"){%>
+<% var count =0
+if(typeof(newTx) !== "undefined"){%>
 <div class="container">
 	<div class="alert alert-success font-bold
 				alert-dismissible" id="myAlert">
@@ -28,7 +29,7 @@
 		<%for(var i= 0 ;i<allTx.length ; i++){ %>
 		<tbody>
 			<tr>
-				<th scope="row">1</th>
+				<th scope="row"><%= count++ %></th>
 				<td ><%= allTx[i].sender_name %></td>
 				<td ><%= allTx[i].rec_name%></td>
 				<td ><%= allTx[i].amount%></td>

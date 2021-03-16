@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 //mongodb+srv://Manikandan:mani@1234@cluster0.2j7rp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 
-mongoose.connect("mongodb://localhost/banking",{
+mongoose.connect("mongodb+srv://Manikandan:mani@1234@cluster0.2j7rp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
 	useNewUrlParser: true,
   	useUnifiedTopology: true
 })

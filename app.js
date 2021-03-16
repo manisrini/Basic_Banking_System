@@ -10,10 +10,10 @@ app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended:false}))
 
-//mongodb+srv://Manikandan:<password>@cluster0.2j7rp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+//mongodb+srv://Manikandan:mani@1234@cluster0.2j7rp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 
-mongoose.connect(process.env.DBURL,{
+mongoose.connect("mongodb://localhost/banking",{
 	useNewUrlParser: true,
   	useUnifiedTopology: true
 })
@@ -37,6 +37,29 @@ app.get("/",function(req,res){
 	res.render("landing")
 })
 
+app.get("/new",function(req,res){
+	res.render("createuser")
+})
+
+app.post("/new",function(req,res){
+	var newUser = {
+		name : req.body.name,
+		email : req.body.mail,
+		phoneNum : req.body.number,
+		balance : req.body.balance,
+	}	 
+	
+	User.create(newUser,function(err,newU){
+		if(err){
+			console.log(err)
+		}
+		else{
+			console.log("user created")
+		}
+	})
+		 
+ })
+
 //List all users
 app.get("/users",function(req,res){
 	
@@ -48,6 +71,9 @@ app.get("/users",function(req,res){
 			res.render("users",{users : user});
 		}
 	})
+
+	
+	
 	
 })
 
